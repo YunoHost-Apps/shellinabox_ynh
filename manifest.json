@@ -18,8 +18,7 @@
   },
   "multi_instance": false,
   "services": [
-      "nginx",
-      "shellinabox"
+      "nginx"
   ],
   "arguments": {
     "install": [
