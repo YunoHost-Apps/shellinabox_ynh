@@ -77,10 +77,14 @@ ynh_script_progression --message="Configuring shellinabox..." --weight=2
 cp ../conf/shellinabox /etc/default/shellinabox
 ynh_replace_string --match_string="__PORT__" --replace_string="$port" --target_file="/etc/default/shellinabox"
 
+
 # Allow the service to log in syslog
 ynh_replace_string --match_string=" -- -q --background" --replace_string=" -- --background" --target_file="/etc/init.d/shellinabox"
-systemctl daemon-reload
 
+# Enable SystemD respawn feature and boot order to avoid premature crashs
+cp ../conf/shellinabox.service /etc/systemd/system/shellinabox.service
+
+systemctl daemon-reload
 ynh_systemd_action --service_name=shellinabox --action=restart
 
 #=================================================
@@ -89,6 +93,7 @@ ynh_systemd_action --service_name=shellinabox --action=restart
 
 # Calculate and store the config file checksum into the app settings
 ynh_store_file_checksum --file="/etc/default/shellinabox"
+ynh_store_file_checksum --file="/etc/systemd/system/shellinabox.service"
 
 #=================================================
 # GENERIC FINALIZATION

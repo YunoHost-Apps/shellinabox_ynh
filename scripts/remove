@@ -38,6 +38,9 @@ ynh_script_progression --message="Removing shellinabox..." --weight=20
 
 ynh_package_autopurge shellinabox
 
+# Remove Systemd auto-created daemon
+rm -f /etc/systemd/system/shellinabox.service
+
 #=================================================
 # REMOVE NGINX CONFIGURATION
 #=================================================
