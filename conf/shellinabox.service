@@ -1,0 +1,38 @@
+# Make it bootable at startup
+[Install]
+WantedBy=multi-user.target
+
+[Unit]
+Documentation=man:shellinaboxd(1)
+
+# Sourcing LSB Path
+SourcePath=/etc/init.d/shellinabox
+Description=LSB: Shell In A Box Daemon
+Before=multi-user.target
+Before=graphical.target
+After=network-online.target
+
+# Awaits LDAP is specific user binding at startup
+After=slapd.service
+After=remote-fs.target
+Wants=network-online.target
+Requires=slapd.service
+
+[Service]
+Type=forking
+
+# Calls for restart when there is a fail
+Restart=on-failure
+RestartSec=5min
+TimeoutSec=5min
+IgnoreSIGPIPE=no
+KillMode=process
+GuessMainPID=no
+RemainAfterExit=no
+SuccessExitStatus=5 6
+
+# Gracefully wait for every service to come up
+ExecStartPre=/bin/sleep 3
+ExecStart=/etc/init.d/shellinabox start
+ExecStop=/etc/init.d/shellinabox stop
+ExecReload=/etc/init.d/shellinabox reload
