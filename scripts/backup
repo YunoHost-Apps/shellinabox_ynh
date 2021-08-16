@@ -35,6 +35,7 @@ ynh_print_info --message="Declaring files to be backed up..."
 
 ynh_backup --src_path="/etc/shellinabox"
 ynh_backup --src_path="/etc/default/shellinabox"
+ynh_backup --src_path="/etc/systemd/system/shellinabox.service"
 
 #=================================================
 # BACKUP THE NGINX CONFIGURATION

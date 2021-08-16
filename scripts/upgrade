@@ -69,9 +69,12 @@ ynh_script_progression --message="Upgrading shellinabox configuration..." --weig
 
 # Verify the checksum and backup the file if it's different
 ynh_backup_if_checksum_is_different --file="/etc/default/shellinabox"
+ynh_backup_if_checksum_is_different --file="/etc/systemd/system/shellinabox.service"
 
 cp ../conf/shellinabox /etc/default/shellinabox
 ynh_replace_string --match_string="__PORT__" --replace_string="$port" --target_file="/etc/default/shellinabox"
+
+cp ../conf/shellinabox.service /etc/systemd/system/shellinabox.service
 
 ynh_replace_string --match_string=" -- -q --background" --replace_string=" -- --background" --target_file="/etc/init.d/shellinabox"
 systemctl daemon-reload
