@@ -33,6 +33,10 @@ ynh_script_progression --message="Configuring a systemd service..."
 
 # Allow the service to log in syslog
 ynh_replace_string --match_string=" -- -q --background" --replace_string=" -- --background" --target_file="/etc/init.d/shellinabox"
+
+# Enable SystemD respawn feature and boot order to avoid premature crashs
+cp ../conf/shellinabox.service /etc/systemd/system/shellinabox.service
+
 systemctl daemon-reload
 
 #=================================================

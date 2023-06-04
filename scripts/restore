@@ -24,6 +24,7 @@ ynh_script_progression --message="Restoring various files..." --weight=3
 
 ynh_restore_file --origin_path="/etc/shellinabox"
 ynh_restore_file --origin_path="/etc/default/shellinabox"
+ynh_restore_file --origin_path="/etc/systemd/system/shellinabox.service"
 
 #=================================================
 # RESTORE SYSTEMD

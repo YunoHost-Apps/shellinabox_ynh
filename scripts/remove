@@ -28,6 +28,9 @@ ynh_remove_nginx_config
 # Remove metapackage and its dependencies
 ynh_package_autopurge shellinabox
 
+# Remove Systemd auto-created daemon
+rm -f /etc/systemd/system/shellinabox.service
+
 #=================================================
 # END OF SCRIPT
 #=================================================
