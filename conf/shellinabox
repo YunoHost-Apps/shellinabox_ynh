@@ -7,8 +7,8 @@ SHELLINABOX_PORT=__PORT__
 # Parameters that are managed by the system and usually should not need
 # changing:
 # SHELLINABOX_DATADIR=/var/lib/shellinabox
-# SHELLINABOX_USER=shellinabox
-# SHELLINABOX_GROUP=shellinabox
+SHELLINABOX_USER=shellinabox
+SHELLINABOX_GROUP=shellinabox
 
 # Any optional arguments (e.g. extra service definitions).  Make sure
 # that that argument is quoted.
