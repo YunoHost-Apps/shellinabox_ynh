@@ -19,7 +19,7 @@ NON debe editarse manualmente.
 Shell In A Box implements a web server that can export arbitrary command line tools to a web based terminal emulator. This emulator is accessible to any JavaScript and CSS enabled web browser and does not require any additional browser plugins.
 
 
-**Versión proporcionada:** 2.21~ynh4
+**Versión proporcionada:** 2.21~ynh5
 
 ## Capturas de pantalla
 

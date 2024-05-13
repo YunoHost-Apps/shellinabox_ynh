@@ -42,7 +42,7 @@ systemctl daemon-reload
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
 
-yunohost service add $app --description="Web based AJAX terminal emulator"
+yunohost service add $app --description="Web based AJAX terminal emulator" --log="/var/log/$app/$app.log"
 
 #=================================================
 # START SYSTEMD SERVICE
@@ -50,7 +50,7 @@ yunohost service add $app --description="Web based AJAX terminal emulator"
 ynh_script_progression --message="Starting a systemd service..."
 
 # Start a systemd service
-ynh_systemd_action --service_name=shellinabox --action=restart
+ynh_systemd_action --service_name=shellinabox --action=restart --log_path="systemd"
 
 #=================================================
 # END OF SCRIPT
